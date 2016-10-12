@@ -17,7 +17,7 @@ var autoIncrement = function (schema, options) {
 
 var getNextSeq = function (db, name, callback) {
   db.collection('counters').findOneAndUpdate(
-    { model: name },
+    { _id: name },
     { $inc: { seq: 1 } },
     { returnOriginal: false, upsert: true },
     function (err, ret) {

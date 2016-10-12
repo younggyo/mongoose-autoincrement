@@ -1,6 +1,6 @@
 {
   "name": "mongoose-autoincrement-id",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Mongoose plugin for auto-increment number ID.",
   "main": "index.js",
   "scripts": {
