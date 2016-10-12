@@ -5,13 +5,16 @@ var autoIncrement = function (schema, options) {
   });
   schema.pre('save', function (next) {
     var doc = this;
-    if (doc.isNew) {
-      getNextSeq(doc.db.db, doc.collection.name, function (err, seq) {
-        if (err) next(err);
-        doc._id = seq;
-        next();
-      });
+    if (doc._id || !doc.isNew) {
+      return next();
     }
+
+    getNextSeq(doc.db.db, doc.collection.name, function (err, seq) {
+      if (err) next(err);
+      doc._id = seq;
+      next();
+    });
+
   });
 };
 
