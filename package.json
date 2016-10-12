@@ -1,5 +1,5 @@
 {
-  "name": "mongoose-autoincrement",
+  "name": "mongoose-autoincrement-id",
   "version": "1.0.0",
   "description": "Mongoose plugin for auto-increment number ID.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saamo/mongoose-autoincrement.git"
+    "url": "git+https://github.com/hl4god/mongoose-autoincrement.git"
   },
   "keywords": [
     "mongoose",
@@ -19,10 +19,10 @@
     "number",
     "id"
   ],
-  "author": "Samir Djellil <samir@djellil.com> (http://samirdjellil.com)",
+  "author": "Holly He <hl4god@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saamo/mongoose-autoincrement/issues"
+    "url": "https://github.com/hl4god/mongoose-autoincrement/issues"
   },
-  "homepage": "https://github.com/saamo/mongoose-autoincrement#readme"
+  "homepage": "https://github.com/hl4god/mongoose-autoincrement#readme"
 }
