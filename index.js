@@ -5,7 +5,7 @@ var autoIncrement = function (schema, options) {
   });
   schema.pre('save', function (next) {
     var doc = this;
-    if (doc.db && doc.isNew && !doc._id) {
+    if (doc.db && doc.isNew && typeof doc._id === 'undefined') {
       return getNextSeq(doc.db.db, doc.collection.name, function (err, seq) {
         if (err) next(err);
         doc._id = seq;
