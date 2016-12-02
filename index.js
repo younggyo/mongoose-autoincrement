@@ -2,6 +2,7 @@
 var autoIncrement = function (schema, options) {
   schema.add({
     _id: { type: Number, index: true, unique: true },
+    createAt:{ type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
   });
   schema.pre('save', function (next) {
