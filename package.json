@@ -4,7 +4,7 @@
   "description": "Mongoose plugin for auto-increment number ID.",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/hl4god/mongoose-autoincrement/issues"
   },
-  "homepage": "https://github.com/hl4god/mongoose-autoincrement#readme"
+  "homepage": "https://github.com/hl4god/mongoose-autoincrement#readme",
+  "devDependencies": {
+    "bluebird": "^3.4.7",
+    "chai": "^3.5.0",
+    "mongoose": "^4.7.7"
+  }
 }
