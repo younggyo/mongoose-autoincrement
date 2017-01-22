@@ -1,17 +1,26 @@
 'use strict';
 var autoIncrement = function (schema, options) {
-  schema.add({
+  var field = {
     _id: { type: Number, index: true, unique: true },
     createAt:{ type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
-  });
+  };
+
+  // swith to options field
+  var fieldName = getField(options);
+  if(fieldName !== '_id') {
+    field[getField(options)] = {type: Number, unique: true};
+    delete field._id;
+  }
+
+  schema.add(field);
   schema.pre('save', function (next) {
     var doc = this;
     doc.updateAt = Date.now();
-    if (doc.db && doc.isNew && typeof doc._id === 'undefined') {
+    if (doc.db && doc.isNew && typeof doc[fieldName] === 'undefined') {
       return getNextSeq(doc.db.db, doc.collection.name, function (err, seq) {
         if (err) next(err);
-        doc._id = seq;
+        doc[fieldName] = seq;
         next();
       });
     }
@@ -19,6 +28,11 @@ var autoIncrement = function (schema, options) {
     next();
   });
 };
+
+var getField = function (options) {
+  if(options && options.field) return options.field;
+  else return '_id';
+}
 
 var getNextSeq = function (db, name, callback) {
   db.collection('counters').findOneAndUpdate(
