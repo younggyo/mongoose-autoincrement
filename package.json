@@ -1,14 +1,14 @@
 {
-  "name": "mongoose-autoincrement-id",
-  "version": "1.0.8",
-  "description": "Mongoose plugin for auto-increment number ID.",
+  "name": "simple-mongoose-autoincrement",
+  "version": "1.0.1",
+  "description": "Mongoose plugin for auto-increment number ID or given field name.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hl4god/mongoose-autoincrement.git"
+    "url": "git+https://github.com/moltak/mongoose-autoincrement.git"
   },
   "keywords": [
     "mongoose",
@@ -19,15 +19,16 @@
     "number",
     "id"
   ],
-  "author": "Holly He <hl4god@gmail.com>",
+  "author": "moltak <moltak@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hl4god/mongoose-autoincrement/issues"
+    "url": "https://github.com/moltak/mongoose-autoincrement/issues"
   },
-  "homepage": "https://github.com/hl4god/mongoose-autoincrement#readme",
+  "homepage": "https://github.com/moltak/mongoose-autoincrement#readme",
   "devDependencies": {
     "bluebird": "^3.4.7",
     "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "mongoose": "^4.7.7"
   }
 }
