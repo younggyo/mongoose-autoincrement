@@ -41,7 +41,7 @@ var getNextSeq = function (db, name, callback) {
     { returnOriginal: false, upsert: true },
     function (err, ret) {
       if (err) callback(err);
-      callback(null, ret.value.seq);
+      else callback(null, ret.value.seq);
     });
 };
 
