@@ -3,9 +3,7 @@ const rx = require('rx');
 
 var autoIncrement = function (schema, options) {
   var field = {
-    _id: { type: Number, index: true, unique: true },
-    createAt:{ type: Date, default: Date.now },
-    updateAt: { type: Date, default: Date.now },
+    _id: { type: String, index: true, unique: true }
   };
 
   // swith to options field
@@ -18,7 +16,6 @@ var autoIncrement = function (schema, options) {
   schema.add(field);
   schema.pre('save', function (next) {
     var doc = this;
-    doc.updateAt = Date.now();
 
     if (doc.db && doc.isNew && typeof doc[fieldName] === 'undefined') {
       getNextSeqObservable(doc.db.db, doc.collection.name)
@@ -50,7 +47,7 @@ var getNextSeqObservable = function (db, name) {
         if (err) {
           return o.onError(err);
         } else {
-          o.onNext(ret.value.seq);
+          o.onNext(String(ret.value.seq));
           return o.completed();
         }
       });
