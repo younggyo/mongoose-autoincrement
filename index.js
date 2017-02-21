@@ -47,7 +47,7 @@ var getNextSeqObservable = function (db, name) {
         if (err) {
           return o.onError(err);
         } else {
-          o.onNext(String(ret.value.seq));
+          o.onNext(ret.value.seq.toString(36));
           return o.completed();
         }
       });
