@@ -18,7 +18,7 @@ var autoIncrement = function (schema, options) {
     var doc = this;
 
     if (doc.db && doc.isNew && typeof doc[fieldName] === 'undefined') {
-      getNextSeqObservable(doc.db.db, doc.collection.name)
+      getNextSeqObservable(doc.db.db, doc.collection.name, options.radix || 10)
         .retryWhen(err => {
           return err;
         })
@@ -37,7 +37,7 @@ var getField = function (options) {
   else return '_id';
 }
 
-var getNextSeqObservable = function (db, name) {
+var getNextSeqObservable = function (db, name, radix) {
   return rx.Observable.create(o => {
     db.collection('counters').findOneAndUpdate(
       { _id: name },
@@ -47,7 +47,7 @@ var getNextSeqObservable = function (db, name) {
         if (err) {
           return o.onError(err);
         } else {
-          o.onNext(ret.value.seq.toString(options.radix || 10));
+          o.onNext(ret.value.seq.toString(radix));
           return o.completed();
         }
       });
