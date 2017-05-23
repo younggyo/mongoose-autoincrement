@@ -4,13 +4,13 @@ const rx = require('rx');
 var autoIncrement = function (schema, options) {
   var useType = (options.type === 'string')? String : Number
   var field = {
-    _id: { type: useType, index: true, unique: true }
+    _id: { type: useType }
   };
 
   // swith to options field
   var fieldName = getField(options);
   if(fieldName !== '_id') {
-    field[getField(options)] = {type: useType, index: true, unique: true};
+    field[getField(options)] = {type: useType, index: true, unique: true, background: true};
     delete field._id;
   }
 
